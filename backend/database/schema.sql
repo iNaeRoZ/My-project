@@ -41,6 +41,6 @@ INSERT INTO bossouls (name,image,HP,Souls,description) VALUES ('Sanctuary Guardi
 
 create table enemygame (
   id int unsigned primary key auto_increment not null,
-  dlc VARCHAR(255) not null,
+  DLC VARCHAR(255) not null,
   Requis VARCHAR(255) not null
 );
