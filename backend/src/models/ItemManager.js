@@ -3,38 +3,38 @@ const AbstractManager = require("./AbstractManager");
 class ItemManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
-    // and pass the table name "item" as configuration
-    super({ table: "item" });
+    // and pass the table name "soul" as configuration
+    super({ table: "soul" });
   }
 
   // The C of CRUD - Create operation
 
-  async create(item) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(soul) {
+    // Execute the SQL INSERT query to add a new soul to the "soul" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
-      [item.title]
+      `insert into ${this.table} (name) values (?)`,
+      [soul.name]
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted soul
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific soul by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
       [id]
     );
 
-    // Return the first row of the result, which represents the item
+    // Return the first row of the result, which represents the soul
     return rows[0];
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
+    // Execute the SQL SELECT query to retrieve all items from the "soul" table
     const [rows] = await this.database.query(`select * from ${this.table}`);
 
     // Return the array of items
@@ -42,14 +42,14 @@ class ItemManager extends AbstractManager {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
+  // TODO: Implement the update operation to modify an existing soul
 
-  // async update(item) {
+  // async update(soul) {
   //   ...
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
+  // TODO: Implement the delete operation to remove an soul by its ID
 
   // async delete(id) {
   //   ...
