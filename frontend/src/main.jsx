@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/bosses",
+        path: "soul",
         element: <AllBosses />,
         loader: ({ request }) => {
           const query = new URL(request.url).search;

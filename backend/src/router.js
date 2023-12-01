@@ -8,7 +8,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import itemControllers module for handling item-related operations
-const itemControllers = require("./controllers/itemControllers");
+// const itemControllers = require("./controllers/itemControllers");
 
 // Route to get a list of items
 router.get("/soul", (req, res) => {
@@ -24,9 +24,7 @@ router.get("/soul", (req, res) => {
 });
 
 // Route to get a specific item by ID
-router.get("/soul/:id", itemControllers.read);
-
-// Route to add a new item
+// router.get("/soul/:id", itemControllers.read);
 router.get("/soul/:id", (req, res) => {
   client
     .query("select * from soul where id = ?", [req.params.id])
@@ -42,6 +40,7 @@ router.get("/soul/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
+// Route to add a new item
 
 /* ************************************************************************* */
 
