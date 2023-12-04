@@ -5,6 +5,7 @@ import axios from "axios";
 
 import App from "./App";
 import AllBosses from "./pages/AllBosses";
+import BossById from "./pages/BossById";
 
 const router = createBrowserRouter([
   {
@@ -12,13 +13,25 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "soul",
+        path: "souls",
         element: <AllBosses />,
         loader: ({ request }) => {
           const query = new URL(request.url).search;
 
           return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/soul${query}`)
+            .get(`${import.meta.env.VITE_BACKEND_URL}/api/souls${query}`)
+            .then((res) => res.data)
+            .catch((err) => console.error(err));
+        },
+      },
+      {
+        path: "/souls/:soulId",
+        element: <BossById />,
+        loader: ({ params }) => {
+          return axios
+            .get(
+              `${import.meta.env.VITE_BACKEND_URL}/api/souls/${params.soulId}`
+            )
             .then((res) => res.data)
             .catch((err) => console.error(err));
         },

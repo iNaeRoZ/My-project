@@ -11,9 +11,9 @@ const router = express.Router();
 // const itemControllers = require("./controllers/itemControllers");
 
 // Route to get a list of items
-router.get("/soul", (req, res) => {
+router.get("/souls", (req, res) => {
   client
-    .query("select * from soul")
+    .query("select * from souls")
     .then((result) => {
       res.status(200).json(result[0]);
     })
@@ -25,9 +25,9 @@ router.get("/soul", (req, res) => {
 
 // Route to get a specific item by ID
 // router.get("/soul/:id", itemControllers.read);
-router.get("/soul/:id", (req, res) => {
+router.get("/souls/:id", (req, res) => {
   client
-    .query("select * from soul where id = ?", [req.params.id])
+    .query("select * from souls where id = ?", [req.params.id])
     .then(([soul]) => {
       if (soul[0] != null) {
         res.json(soul[0]);
